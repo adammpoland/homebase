@@ -1,0 +1,143 @@
+
+      body { 
+        background-image: url("img/red2.gif");
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        
+        /*background-image: url("img/red.jpg");*/
+        color: darkred;
+        font-family: Impact, Charcoal, sans-serif;
+
+        font-size: large;
+      }
+
+      .container{
+        max-width: 800px;
+        margin: auto;
+        background-color: black;
+        opacity: 0.8;
+        border: 1px solid red;
+        padding: 20px;
+        overflow:hidden;
+      
+
+      }
+      .containerInner{
+        max-width: 400px;
+        margin: auto;
+       
+        border: 1px solid red;
+        padding: 20px;
+        overflow:hidden;
+      
+
+      }
+
+      .items{
+        padding:1em;
+        border:1px black;
+      }
+
+      input.items{
+        width:200px;
+        height: 2em;
+        background-color: red;
+        border: 1px solid gray; 
+        padding: 5px;
+        text-align: center;
+        font-size: large;
+        margin:auto;
+        
+      }
+
+      input.items:hover{
+        background-color: darkorange;
+
+      }
+      input.delete:hover{
+        background-color: darkorange;
+      }
+
+      input.delete{
+        width: 200px;
+        height: 2em;
+        background-color: red;
+        border: 1px solid gray; 
+        padding:5px;
+        margin:auto;
+        text-align:center;
+        font-size: large;
+
+      }
+
+     
+      input.upload{
+        width:200px;
+        height: 2em;
+        background-color: red;
+        border: 1px solid gray; 
+        padding: 5px;
+        text-align: center;
+        font-size: large;
+      }
+
+      .fileControl{
+        float: left;
+      }
+
+      
+      .title{
+        font-size: 300%;
+      }
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: black;
+        border: 1px solid red; 
+
+        top: 0;
+        width: 100%;
+      }
+      
+      li {
+        float: left;
+        border: 1px solid red; 
+        
+
+      }
+      
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 30px;
+        text-decoration: none;
+      }
+      
+      li a:hover:not(.active) {
+        background-color: darkred;
+        color: grey;
+      }
+      
+      .active {
+        background-color: darkgoldenrod;
+      }
+
+      .custom-file-upload {
+        width: 400px;
+        height: 3em;
+        background-color: red;
+        border: 1px solid gray; 
+        font-size: larger;
+        cursor: pointer;
+        color: black;
+    }
+      input[type="file"] {
+        display: none;
+        padding:5px;
+        font-size: larger;
+      }

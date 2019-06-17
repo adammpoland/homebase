@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+     <title>Homebase</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" type="text/css" href="darkred.css">
+
+  </head>
+
+  <body>
+
+      <ul>
+        <li><a class="active" href="/">UPLOADER</a></li>
+        <li><a href="/savedURLs">SAVED URLS</a></li>
+        <li><a href="/contacts">CONTACTS</a></li>
+      </ul>
+
+      <br>
+
+      <div class="container">
+          <h1 class="title">HOMEBASE: UPLOADER</h1>
+      </div>
+      <br>
+  <div class="container">
+        <form action="/upload" method="post" enctype="multipart/form-data">
+          <label for="file-upload" class="custom-file-upload">
+              SELECT FILE
+          </label>
+          <br>
+         
+          <br>
+          <input id="file-upload" type="file" name='myFile'>
+        
+          <input class="upload" type="submit" value="Upload File">
+      </form>
+  </div>
+      <br>
+  <div class="container">
+    <h1>CLICK A FILE TO DOWNLOAD</h1>
+      <% for(let i=0; i<ideas.length; i++) {%>
+
+      <div class="container">
+          <h3><%=i+1%> . <%=ideas[i].title%></h3>
+          <form action="/download" method="POST" class="fileControl">
+            <input type="hidden" name="title" value="<%=ideas[i].title%>"> 
+            <input type="submit" class="items" value="DOWNLOAD"> 
+          </form>
+
+          <form action="/browserView" method="GET" class="fileControl">
+            <input type="hidden" name="browser" value="<%=ideas[i].title%>"> 
+            <input type="submit" class="delete" value="BROWSE VIEW"> 
+          </form>
+
+          <form action="/delete" method="DELETE" class="fileControl">
+            <input type="hidden" name="deleteFile" value="<%=ideas[i].title%>"> 
+            <input type="submit" class="delete" value="DELETE"> 
+          </form>
+          <br>
+    </div>
+    <br>
+
+      <% } %>
+  </div>
+
+  </body>
+</html>
