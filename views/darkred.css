@@ -1,36 +1,43 @@
 
       body { 
-        background-image: url("img/red2.gif");
+        background-image: url("img/lines.gif");
         background-repeat: no-repeat;
         background-size: cover;
 
         
         /*background-image: url("img/red.jpg");*/
-        color: darkred;
-        font-family: Impact, Charcoal, sans-serif;
+        color:red;
+        font-family: 'Megrim', cursive;
 
         font-size: large;
       }
 
       .container{
-        max-width: 800px;
+       /* max-width: 800px;*/
+        margin: auto;
+        opacity: 0.8;
+        background-color: #696969;
+
+        border: 1px solid red;
+        padding: 15px;
+        overflow:hidden;
+
+
+      }
+      .top{
         margin: auto;
         background-color: black;
         opacity: 0.8;
         border: 1px solid red;
-        padding: 20px;
+        padding: 1px 15px;
         overflow:hidden;
-      
-
       }
       .containerInner{
-        max-width: 400px;
-        margin: auto;
        
-        border: 1px solid red;
-        padding: 20px;
-        overflow:hidden;
       
+        font-family: Railway;
+        border: 1px solid red;
+
 
       }
 
@@ -71,7 +78,21 @@
 
       }
 
-     
+     .btn{
+      max-width: 200px;
+      height: 3em;
+      background-color: orange;
+      border: 1px solid gray; 
+      font-size: larger;
+      cursor: pointer;
+      color: black;
+      font-family: Megrim;
+     }
+
+     .btn.hover{
+       background-color: darkslategray;
+     }
+
       input.upload{
         width:200px;
         height: 2em;
@@ -88,7 +109,7 @@
 
       
       .title{
-        font-size: 300%;
+        font-size:80px;
       }
 
       ul {
@@ -136,8 +157,107 @@
         cursor: pointer;
         color: black;
     }
-      input[type="file"] {
-        display: none;
-        padding:5px;
-        font-size: larger;
-      }
+    input.submit{
+      background-color:darkred;
+      border:1px;
+      border-color:darkred;
+      max-width:200px;
+      height:20px;
+      color:red;
+    }
+    
+    .FrameContainer{
+      width:auto;
+      background-color: darkgrey;
+      opacity: 0.9;
+      border: 1px solid red;
+      padding: 20px;
+      overflow:hidden;
+    }
+    .frames{
+      padding: 10px;
+
+      float: left;
+      border: 1px solid red;
+      margin:auto;
+      width: 50%;
+
+    }
+    .truncate {
+      max-width: 350px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    a{
+      color:red;
+      text-decoration: none;
+      text-align: center;
+
+    }
+    a:link{
+      color:red;
+    }
+    a:hover{
+      color:orange;
+    }
+    iframe{
+      min-height:300px;
+      max-height:500px;
+      max-width:600px;
+      border:none;
+    }
+    .input-field input[type=text] {
+      color: red;
+    }
+    .input-field input[type=text]:focus + label {
+      color: white;
+    }
+    .input-field input[type=text]:placeholder {
+      color: white;
+      font-family: Megrim;
+    }
+    /* label underline focus color */
+    .input-field input[type=text]:focus {
+      border-bottom: 1px solid orange;
+      box-shadow: 0 1px 0 0 orange;
+    }
+    /* valid color */
+    .input-field input[type=text].valid {
+      border-bottom: 1px solid orange;
+      box-shadow: 0 1px 0 0 orange;
+    }
+    /* invalid color */
+    .input-field input[type=text].invalid {
+      border-bottom: 1px solid #000;
+      box-shadow: 0 1px 0 0 #000;
+    }
+    /* icon prefix focus color */
+    .input-field .prefix.active {
+      color: red;
+    }
+
+    .labelfix{
+      color: red;
+      font-size:15px;
+      background: none;
+    }
+
+    .cHeight{
+      min-height: 100px;
+    }
+
+    .flex {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .btnSmall{
+      background-color: orange;
+      border: 1px solid gray; 
+      margin:auto;
+      cursor: pointer;
+      color: black;
+      font-family: Megrim;
+      float: left;
+    }

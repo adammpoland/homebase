@@ -5,6 +5,14 @@
   <head>
      <title>Homebase</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="https://fonts.googleapis.com/css?family=Megrim&display=swap" rel="stylesheet">
+      <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
      <link rel="stylesheet" type="text/css" href="darkred.css">
 
   </head>
@@ -20,49 +28,77 @@
       <br>
 
       <div class="container">
-          <h1 class="title">HOMEBASE: UPLOADER</h1>
+          <h1 class="title">HOMEBASE: Uploader</h1>
       </div>
+
       <br>
-  <div class="container">
-        <form action="/upload" method="post" enctype="multipart/form-data">
-          <label for="file-upload" class="custom-file-upload">
-              SELECT FILE
-          </label>
-          <br>
-         
-          <br>
-          <input id="file-upload" type="file" name='myFile'>
-        
-          <input class="upload" type="submit" value="Upload File">
-      </form>
-  </div>
-      <br>
-  <div class="container">
-    <h1>CLICK A FILE TO DOWNLOAD</h1>
-      <% for(let i=0; i<ideas.length; i++) {%>
 
       <div class="container">
-          <h3><%=i+1%> . <%=ideas[i].title%></h3>
-          <form action="/download" method="POST" class="fileControl">
-            <input type="hidden" name="title" value="<%=ideas[i].title%>"> 
-            <input type="submit" class="items" value="DOWNLOAD"> 
+        <form action="/upload" method="post" enctype="multipart/form-data">
+              <div class="file-field input-field">
+                <div class="btn">
+                  <span>File</span>
+                  <input id="file-upload" type="file" name='myFile'>
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+                </div>
+              </div>
+              <input class="btn" type="submit" value="Upload File">
           </form>
+      </div>
+      <br>
 
-          <form action="/browserView" method="GET" class="fileControl">
-            <input type="hidden" name="browser" value="<%=ideas[i].title%>"> 
-            <input type="submit" class="delete" value="BROWSE VIEW"> 
-          </form>
 
-          <form action="/delete" method="DELETE" class="fileControl">
-            <input type="hidden" name="deleteFile" value="<%=ideas[i].title%>"> 
-            <input type="submit" class="delete" value="DELETE"> 
-          </form>
-          <br>
-    </div>
-    <br>
+    
 
+           
+    <div class="container cHeight">
+        <h1>FILES:</h1> 
+        <div class="row flex">
+        
+    
+        <% for(let i=0; i<ideas.length; i++) {%>
+          <div class="col s12 m7 l4">
+            <div class="card darken-1">
+              <div class="card-image">
+                <img src="../public/uploads/<%=ideas[i].title%>" alt="Not An Image" onerror="this.onerror=null;this.src='../public/uploads/noImg.gif';" >
+              </div>
+              <div class="card-content">
+                <h5><%=ideas[i].title%></h5>
+              </div>
+              <div class="card-action">
+
+                <div class="row">
+                  <div class="col s12 m7 l4">
+
+                    <form action="/download" method="POST" >
+                      <input type="hidden" name="title" value="<%=ideas[i].title%>"> 
+                      <input type="submit" class="btnSmall" value="DOWNLOAD"> 
+                    </form>
+                  </div>
+                  <div class="col s12 m7 l4">
+                    <form target="_blank" action="/public/uploads/<%=ideas[i].title%>" method="get">
+                      <input type="hidden" name="fileName" value="<%=ideas[i].title%>"> 
+                      <input type="submit" class="btnSmall" value="BROWSER"> 
+                    </form>
+                  </div>
+
+                    <div class="col s12 m7 l4">
+                    <form action="/deleteFile" method="post">
+                      <input type="hidden" name="fileName" value="<%=ideas[i].title%>">
+                      <input type="hidden" name="deleteFile" value="<%=ideas[i]._id%>"> 
+                      <input type="submit" class="btnSmall" value="DELETE"> 
+                    </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
       <% } %>
-  </div>
-
+      </div>
+              
+   
   </body>
 </html>

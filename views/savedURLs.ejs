@@ -5,18 +5,27 @@
   <head>
      <title>Homebase</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="https://fonts.googleapis.com/css?family=Megrim&display=swap" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
      <link rel="stylesheet" type="text/css" href="darkred.css">
      <style>
         body{
-            background-image: url("img/red3.gif");
-            background-repeat: no-repeat;
-            background-size: cover;
-    
-            /*
-            -webkit-transform: rotate(30deg);
-            transform: rotate(30deg);
-            */
+          background-image: url("img/0.gif");
+          background-repeat: no-repeat;
+          background-size: cover;
+          /*
+          -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+          */
         }
+
+       
      </style>
   </head>
 
@@ -34,9 +43,60 @@
           <h1 class="title">HOMEBASE: Saved URLs</h1>
       </div>
       <br>
-      <div class="container">
-           <h2>Click to Navigate to that website</h2>
+      <div class="container ">
+          <h2>ADD A NEW URL:</h2>
+          <form action="/addNewURL" method="POST">
+            <br>
+            <input type="text" placeholder="URL" name="newURL" id="url" class="input-field">
+            <br>
+           <br>
+            <input type="text" placeholder="Categorie"name="newCategorie" id="categorie" class="input-field">
+            <br>
+            <br>
+            <label class="labelfix" for="notes" style="color:white" >Notes:</label><br>
+
+            <textarea id="notes"placeholder="Notes" name="newNote" class="materialize-textarea"> </textarea>
+            <br>
+
+
+            <input type="submit" class="btn" value="ADD"> 
+          </form>
       </div>
+
+      <br>
+
+
+      <div class="container cHeight">
+          <h1>SITES:</h1> 
+          <div class="row flex">
+         
+      
+          <% for(let i=0; i<urls.length; i++) {%>
+            <div class="col s12 m7 l4">
+              <div class="card darken-2">
+                <div class="card-image video-container">
+                    <iframe src="<%=urls[i].url%>">
+                        <p>Your browser does not support iframes.</p>
+                      </iframe>
+
+                  <span class="truncate"><%=urls[i].url%></span>
+                </div>
+                
+                <div class="card-action">
+                    <p>Categorie: <%=urls[i].categorie%></p>
+                    <p class="truncate">Notes: <%=urls[i].notes%></p>
+                    <a href="<%=urls[i].url%>" >Navigate</a>
+                        <form method="POST" action="/deleteURL">
+                          <input type="hidden" name="deleteURL" value="<%=urls[i].url%>"> 
+                          <input type="submit" class="btn" style="height: 40px" value="DELETE">
+                        </form>
+  
+                </div>
+              </div>
+            </div>
+        <% } %>
+        </div>
+
 
   </body>
 </html>
