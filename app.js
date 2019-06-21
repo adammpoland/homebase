@@ -7,7 +7,7 @@ const url = "mongodb://localhost:27017/mydb";
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const fs = require('fs');
-const hostURL = 'http://localhost:5000/';
+const hostURL = 'http://159.89.157.220:5000/';
 const app = express();
 var methodOverride = require('method-override')
 
@@ -83,58 +83,68 @@ app.get('/', (req, res) => {
 
 
 app.post('/upload', (req, res) => {
-    upload(req, res, (err) => {
-        if (err) {
-            console.log("err");
-
-            console.log(err);
-
-            res.render('index', {
-                msg: err
-                
-            });
-
-        } else {
-            if (req.file == undefined) {
-                console.log(req.file);
-
+    try {
+        upload(req, res, (err) => {
+            if (err) {
+                console.log("err");
+    
+                console.log(err);
+    
                 res.render('index', {
-                    msg: 'Error no file selected'
+                    msg: err
+                    
                 });
+    
             } else {
-                console.log("the fuck?");
-
-                const newUser={
-                    title: req.file.filename,
-                    //details: req.body.details
-
+                if (req.file == undefined) {
+                    console.log(req.file);
+    
+                    res.render('index', {
+                        msg: 'Error no file selected'
+                    });
+                } else {
+                    console.log("the fuck?");
+    
+                    const newUser={
+                        title: req.file.filename,
+                        //details: req.body.details
+    
+                    }
+                    new Idea(newUser)
+                        .save()
+    
+                    Idea.find({}, (err, ideas) => {
+                        if (err) return console.log(err);
+                
+                        res.writeHead(301,
+                            {Location: hostURL}
+                          );
+                        res.end();
+                    });
+                   
+    
+    
                 }
-                new Idea(newUser)
-                    .save()
-
-                Idea.find({}, (err, ideas) => {
-                    if (err) return console.log(err);
-            
-                    res.writeHead(301,
-                        {Location: hostURL}
-                      );
-                    res.end();
-                });
-               
-
-
             }
-        }
-    })
+        })
+    } catch (error) {
+        
+    }
+   
 });
 
 
 
 //for downloads
 app.post('/download', function (req, res) {
-    let file = __dirname + '/public/uploads/'+req.body.title;
+    try {
+        let file = __dirname + '/public/uploads/'+req.body.title;
     console.log(file);
     res.download(file); // Set disposition and send it.
+    } catch (error) {
+        
+    }
+    
 });
 
 
